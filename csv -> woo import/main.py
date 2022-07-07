@@ -3,6 +3,7 @@
 import sys
 import csv
 import os
+import re
 
 # Modules to process different lines
 from modules.Iam import iam
@@ -53,6 +54,13 @@ with open('output.csv', 'w') as f:
     rows = []
 
     for prod in csv_data:
+
+        # Add space between value and unit, if it is missing.
+        x = re.findall("([0-9]+)([A-z]+)", prod.volumen)
+        if len(x) == 1:
+            prod.volumen = str(prod.volumen).replace(
+                x[0][0], str(x[0][0]) + " ")
+
         rows.append({
             fieldnames[0]: prod.naziv,
             fieldnames[1]: prod.kratkiO,

@@ -56,7 +56,6 @@ class Other:
         # print(tmp)
 
         self.slike = tmp
-        os.system("echo " + str(self.slike) + " >> debug.txt")
 
         # print(self.slike)
 
